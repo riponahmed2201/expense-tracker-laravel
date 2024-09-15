@@ -9,7 +9,7 @@
             <!--begin::Wrapper-->
             <div class="w-lg-500px p-10 p-lg-15 mx-auto">
                 <!--begin::Form-->
-                <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="#" method="POST">
+                <form class="form w-100" action="{{ route('login.process') }}" method="POST">
 
                     @csrf
 
@@ -57,8 +57,8 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <!--begin::Submit button-->
-                        <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-                            <span class="indicator-label">Continue</span>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 mb-5">
+                            <span class="indicator-label">Login</span>
                         </button>
                         <!--end::Submit button-->
                     </div>
