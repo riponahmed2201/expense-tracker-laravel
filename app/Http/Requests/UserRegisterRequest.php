@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UserRegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,19 @@ class UserRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'name' => $this->input('name'),
+            'email' => $this->input('email'),
+            'password' => Hash::make($this->input('password')),
+            'user_type' => 'USER',
         ];
     }
 }
